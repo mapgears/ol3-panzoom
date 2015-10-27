@@ -1,3 +1,6 @@
+var minZoom = 6;
+var maxZoom = 15;
+
 /**
  * In OpenLayers 2, the OpenLayers.ImgPath was used to define a directory where
  * native controls fetched their images. The same idea is borrowed here in
@@ -5,6 +8,8 @@
  */
 var panZoom = new ol.control.PanZoom({
   imgPath: './resources/ol2img',
+  minZoom: minZoom,
+  maxZoom: maxZoom,
   slider: true
 });
 
@@ -21,7 +26,12 @@ var map = new ol.Map({
   ],
   target: 'map',
   view: new ol.View({
-    center: ol.proj.transform([-70, 50], 'EPSG:4326', 'EPSG:3857'),
-    zoom: 5
+    center:[-7910321, 6179398],
+    minZoom: minZoom,
+    maxZoom: maxZoom,
+    zoom: 12
   })
 });
+
+
+

@@ -4,6 +4,8 @@
  *     duration: (number|undefined),
  *     imgPath: (string|undefined),
  *     maxExtent: (ol.Extent|undefined),
+ *     maxZoom: (number|undefined),
+ *     minZoom: (number|undefined),
  *     pixelDelta: (number|undefined),
  *     slider: (boolean|undefined),
  *     target: (Element|undefined),
@@ -44,6 +46,24 @@ olx.control.PanZoomOptions.prototype.imgPath;
  * @api
  */
 olx.control.PanZoomOptions.prototype.maxExtent;
+
+
+/**
+ * Maximum zoom level of the slider. Must fit the view maximum zoom level.
+ * Only required if a slider is used. Default is `19`.
+ * @type {number|undefined}
+ * @api
+ */
+olx.control.PanZoomOptions.prototype.maxZoom;
+
+
+/**
+ * Minimum zoom level of the slider. Must fit the view mininum zoom level.
+ * Only required if a slider is used. Default is `0`.
+ * @type {number|undefined}
+ * @api
+ */
+olx.control.PanZoomOptions.prototype.minZoom;
 
 
 /**
