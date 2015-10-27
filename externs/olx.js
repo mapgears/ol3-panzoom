@@ -1,8 +1,12 @@
 /**
  * @typedef {{
+ *     className: (string|undefined),
  *     duration: (number|undefined),
+ *     imgPath: (string|undefined),
  *     pixelDelta: (number|undefined),
- *     target: (Element|undefined)
+ *     slider: (boolean|undefined),
+ *     target: (Element|undefined),
+ *     zoomDelta: (number|undefined)
  * }}
  * @api
  */
@@ -10,11 +14,27 @@ olx.control.PanZoomOptions;
 
 
 /**
- * Animation duration in milliseconds. Default is `250`.
+ * Name of the CSS class. Default is `ol-panzoom`.
+ * @type {string|undefined}
+ * @api
+ */
+olx.control.PanZoomOptions.prototype.className;
+
+
+/**
+ * Animation duration in milliseconds. Default is `100`.
  * @type {number|undefined}
  * @api
  */
 olx.control.PanZoomOptions.prototype.duration;
+
+
+/**
+ * The directory that holds the images for the components.
+ * @type {string|undefined}
+ * @api
+ */
+olx.control.PanZoomOptions.prototype.imgPath;
 
 
 /**
@@ -26,8 +46,25 @@ olx.control.PanZoomOptions.prototype.pixelDelta;
 
 
 /**
+ * Whether to include a slider or not, in which case a zoom to max extent
+ * button is added instead. Default is `false`.
+ * @type {number|undefined}
+ * @api
+ */
+olx.control.PanZoomOptions.prototype.slider;
+
+
+/**
  * Target.
  * @type {Element|undefined}
  * @api
  */
 olx.control.PanZoomOptions.prototype.target;
+
+
+/**
+ * Zoom delta. Default is `1`.
+ * @type {number|undefined}
+ * @api
+ */
+olx.control.PanZoomOptions.prototype.zomDelta;

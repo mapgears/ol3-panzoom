@@ -23,10 +23,22 @@ var OL3PanZoom = function(opt_options) {
   this.listenerKeys_ = [];
 
   /**
+   * @type {?string}
+   * @private
+   */
+  this.className_ = options.className ? options.className : 'ol-panzoom';
+
+  /**
    * @private
    * @type {number}
    */
   this.duration_ = options.duration !== undefined ? options.duration : 100;
+
+  /**
+   * @type {?string}
+   * @private
+   */
+  this.imgPath_ = options.imgPath ? options.imgPath : null;
 
   /**
    * @private
@@ -36,16 +48,16 @@ var OL3PanZoom = function(opt_options) {
       options.pixelDelta : 128;
 
   /**
-   * @type {?string}
    * @private
+   * @type {boolean}
    */
-  this.className_ = options.className ? options.className : 'ol-panzoom';
+  this.slider_ = options.slider !== undefined ? options.slider : false;
 
   /**
-   * @type {?string}
    * @private
+   * @type {number}
    */
-  this.imgPath_ = options.imgPath ? options.imgPath : null;
+  this.zoomDelta_ = options.zoomDelta !== undefined ? options.zoomDelta : 1;
 
   /**
    * @type {Element}
@@ -71,11 +83,34 @@ var OL3PanZoom = function(opt_options) {
    */
   this.panWestEl_ = this.createButtonEl_('pan-west');
 
+  /**
+   * @type {Element}
+   * @private
+   */
+  this.zoomInEl_ = this.createButtonEl_('zoom-in');
+
+  /**
+   * @type {Element}
+   * @private
+   */
+  this.zoomOutEl_ = this.createButtonEl_('zoom-out');
+
+  /**
+   * @type {?Element}
+   * @private
+   */
+  this.zoomMaxEl_ = this.slider_ ? null : this.createButtonEl_('zoom-max');
+
   var element = this.createEl_();
   element.appendChild(this.panNorthEl_);
   element.appendChild(this.panWestEl_);
   element.appendChild(this.panEastEl_);
   element.appendChild(this.panSouthEl_);
+  element.appendChild(this.zoomInEl_);
+  element.appendChild(this.zoomOutEl_);
+  if (this.zoomMaxEl_) {
+    element.appendChild(this.zoomMaxEl_);
+  }
 
   goog.base(this, /** olx.control.ControlOptions */ ({
     element: element,
@@ -115,6 +150,10 @@ OL3PanZoom.prototype.setMap = function(map) {
         this.handlePanSouthClick_, false, this));
     keys.push(goog.events.listen(this.panWestEl_, goog.events.EventType.CLICK,
         this.handlePanWestClick_, false, this));
+    keys.push(goog.events.listen(this.zoomInEl_, goog.events.EventType.CLICK,
+        this.handleZoomInClick_, false, this));
+    keys.push(goog.events.listen(this.zoomOutEl_, goog.events.EventType.CLICK,
+        this.handleZoomOutClick_, false, this));
   }
 };
 
@@ -152,6 +191,7 @@ OL3PanZoom.prototype.createEl_ = function() {
 OL3PanZoom.prototype.createButtonEl_ = function(action) {
   var divEl = document.createElement('div');
   var path = this.imgPath_;
+  var slider = this.slider_;
 
   if (path) {
     divEl.style.width = '18px';
@@ -180,6 +220,25 @@ OL3PanZoom.prototype.createButtonEl_ = function(action) {
         imgEl.src = [path, 'west-mini.png'].join('/');
         divEl.style.top = '22px';
         divEl.style.left = '4px';
+        break;
+      case 'zoom-in':
+        imgEl.src = [path, 'zoom-plus-mini.png'].join('/');
+        divEl.style.top = '63px';
+        divEl.style.left = '13px';
+        break;
+      case 'zoom-out':
+        imgEl.src = [path, 'zoom-minus-mini.png'].join('/');
+        if (slider) {
+          divEl.style.top = '290px';
+        } else {
+          divEl.style.top = '99px';
+        }
+        divEl.style.left = '13px';
+        break;
+      case 'zoom-max':
+        imgEl.src = [path, 'zoom-world-mini.png'].join('/');
+        divEl.style.top = '81px';
+        divEl.style.left = '13px';
         break;
     }
     divEl.appendChild(imgEl);
@@ -231,6 +290,24 @@ OL3PanZoom.prototype.handlePanWestClick_ = function(evt) {
 
 /**
  * @param {goog.events.BrowserEvent} evt
+ * @private
+ */
+OL3PanZoom.prototype.handleZoomInClick_ = function(evt) {
+  this.zoomByDelta_(this.zoomDelta_);
+};
+
+
+/**
+ * @param {goog.events.BrowserEvent} evt
+ * @private
+ */
+OL3PanZoom.prototype.handleZoomOutClick_ = function(evt) {
+  this.zoomByDelta_(-this.zoomDelta_);
+};
+
+
+/**
+ * @param {goog.events.BrowserEvent} evt
  * @param {string} direction
  * @return {boolean}
  * @private
@@ -275,4 +352,32 @@ OL3PanZoom.prototype.pan_ = function(evt, direction) {
   stopEvent = true;
 
   return !stopEvent;
+};
+
+
+/**
+ * @param {number} delta Zoom delta.
+ * @private
+ */
+OL3PanZoom.prototype.zoomByDelta_ = function(delta) {
+  var map = this.getMap();
+  var view = map.getView();
+  if (!view) {
+    // the map does not have a view, so we can't act
+    // upon it
+    return;
+  }
+  var currentResolution = view.getResolution();
+  if (currentResolution) {
+    if (this.duration_ > 0) {
+      map.beforeRender(ol.animation.zoom({
+        undefined: null, // ? the compiler complains otherwise
+        resolution: currentResolution,
+        duration: this.duration_,
+        easing: ol.easing.easeOut
+      }));
+    }
+    var newResolution = view.constrainResolution(currentResolution, delta);
+    view.setResolution(newResolution);
+  }
 };
