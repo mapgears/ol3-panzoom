@@ -4,7 +4,8 @@
  * order to reuse the same images.
  */
 var panZoom = new ol.control.PanZoom({
-  imgPath: './resources/ol2img'
+  imgPath: './resources/ol2img',
+  maxExtent: [813079, 5929220, 848966, 5936863]
 });
 
 var map = new ol.Map({

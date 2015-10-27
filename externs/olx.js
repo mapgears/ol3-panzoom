@@ -3,6 +3,7 @@
  *     className: (string|undefined),
  *     duration: (number|undefined),
  *     imgPath: (string|undefined),
+ *     maxExtent: (ol.Extent|undefined),
  *     pixelDelta: (number|undefined),
  *     slider: (boolean|undefined),
  *     target: (Element|undefined),
@@ -35,6 +36,14 @@ olx.control.PanZoomOptions.prototype.duration;
  * @api
  */
 olx.control.PanZoomOptions.prototype.imgPath;
+
+
+/**
+ * Extent to zoom to.  If set, adds the zoom to max extent button.
+ * @type {ol.Extent|undefined}
+ * @api
+ */
+olx.control.PanZoomOptions.prototype.maxExtent;
 
 
 /**

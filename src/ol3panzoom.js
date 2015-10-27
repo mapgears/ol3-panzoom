@@ -29,8 +29,8 @@ var OL3PanZoom = function(opt_options) {
   this.className_ = options.className ? options.className : 'ol-panzoom';
 
   /**
-   * @private
    * @type {number}
+   * @private
    */
   this.duration_ = options.duration !== undefined ? options.duration : 100;
 
@@ -41,21 +41,27 @@ var OL3PanZoom = function(opt_options) {
   this.imgPath_ = options.imgPath ? options.imgPath : null;
 
   /**
+   * @type {?ol.Extent}
    * @private
+   */
+  this.maxExtent_ = options.maxExtent ? options.maxExtent : null;
+
+  /**
    * @type {number}
+   * @private
    */
   this.pixelDelta_ = options.pixelDelta !== undefined ?
       options.pixelDelta : 128;
 
   /**
-   * @private
    * @type {boolean}
+   * @private
    */
   this.slider_ = options.slider !== undefined ? options.slider : false;
 
   /**
-   * @private
    * @type {number}
+   * @private
    */
   this.zoomDelta_ = options.zoomDelta !== undefined ? options.zoomDelta : 1;
 
@@ -99,7 +105,8 @@ var OL3PanZoom = function(opt_options) {
    * @type {?Element}
    * @private
    */
-  this.zoomMaxEl_ = this.slider_ ? null : this.createButtonEl_('zoom-max');
+  this.zoomMaxEl_ = (!this.slider_ && this.maxExtent_) ?
+      this.createButtonEl_('zoom-max') : null;
 
   var element = this.createEl_();
   element.appendChild(this.panNorthEl_);
@@ -154,6 +161,10 @@ OL3PanZoom.prototype.setMap = function(map) {
         this.handleZoomInClick_, false, this));
     keys.push(goog.events.listen(this.zoomOutEl_, goog.events.EventType.CLICK,
         this.handleZoomOutClick_, false, this));
+    if (this.maxExtent_ && !this.slider_) {
+      keys.push(goog.events.listen(this.zoomMaxEl_, goog.events.EventType.CLICK,
+          this.handleZoomMaxClick_, false, this));
+    }
   }
 };
 
@@ -191,6 +202,7 @@ OL3PanZoom.prototype.createEl_ = function() {
 OL3PanZoom.prototype.createButtonEl_ = function(action) {
   var divEl = document.createElement('div');
   var path = this.imgPath_;
+  var maxExtent = this.maxExtent_;
   var slider = this.slider_;
 
   if (path) {
@@ -230,8 +242,10 @@ OL3PanZoom.prototype.createButtonEl_ = function(action) {
         imgEl.src = [path, 'zoom-minus-mini.png'].join('/');
         if (slider) {
           divEl.style.top = '290px';
-        } else {
+        } else if (maxExtent) {
           divEl.style.top = '99px';
+        } else {
+          divEl.style.top = '81px';
         }
         divEl.style.left = '13px';
         break;
@@ -303,6 +317,21 @@ OL3PanZoom.prototype.handleZoomInClick_ = function(evt) {
  */
 OL3PanZoom.prototype.handleZoomOutClick_ = function(evt) {
   this.zoomByDelta_(-this.zoomDelta_);
+};
+
+
+/**
+ * @param {goog.events.BrowserEvent} evt
+ * @private
+ */
+OL3PanZoom.prototype.handleZoomMaxClick_ = function(evt) {
+  var map = this.getMap();
+  var view = map.getView();
+  var extent = !this.maxExtent_ ?
+      view.getProjection().getExtent() : this.maxExtent_;
+  var size = map.getSize();
+  goog.asserts.assert(size, 'size should be defined');
+  view.fit(extent, size);
 };
 
 
