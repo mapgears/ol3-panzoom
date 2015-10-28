@@ -185,13 +185,13 @@ OL3PanZoom.prototype.setMap = function(map) {
 
   if (map) {
     keys.push(goog.events.listen(this.panEastEl_, goog.events.EventType.CLICK,
-        this.handlePanEastClick_, false, this));
+        this.pan_.bind(this, 'east'), false, this));
     keys.push(goog.events.listen(this.panNorthEl_, goog.events.EventType.CLICK,
-        this.handlePanNorthClick_, false, this));
+        this.pan_.bind(this, 'north'), false, this));
     keys.push(goog.events.listen(this.panSouthEl_, goog.events.EventType.CLICK,
-        this.handlePanSouthClick_, false, this));
+        this.pan_.bind(this, 'south'), false, this));
     keys.push(goog.events.listen(this.panWestEl_, goog.events.EventType.CLICK,
-        this.handlePanWestClick_, false, this));
+        this.pan_.bind(this, 'west'), false, this));
     keys.push(goog.events.listen(this.zoomInEl_, goog.events.EventType.CLICK,
         this.handleZoomInClick_, false, this));
     keys.push(goog.events.listen(this.zoomOutEl_, goog.events.EventType.CLICK,
@@ -323,46 +323,6 @@ OL3PanZoom.prototype.createButtonEl_ = function(action) {
 
 /**
  * @param {goog.events.BrowserEvent} evt
- * @return {boolean}
- * @private
- */
-OL3PanZoom.prototype.handlePanEastClick_ = function(evt) {
-  return this.pan_(evt, 'east');
-};
-
-
-/**
- * @param {goog.events.BrowserEvent} evt
- * @return {boolean}
- * @private
- */
-OL3PanZoom.prototype.handlePanNorthClick_ = function(evt) {
-  return this.pan_(evt, 'north');
-};
-
-
-/**
- * @param {goog.events.BrowserEvent} evt
- * @return {boolean}
- * @private
- */
-OL3PanZoom.prototype.handlePanSouthClick_ = function(evt) {
-  return this.pan_(evt, 'south');
-};
-
-
-/**
- * @param {goog.events.BrowserEvent} evt
- * @return {boolean}
- * @private
- */
-OL3PanZoom.prototype.handlePanWestClick_ = function(evt) {
-  return this.pan_(evt, 'west');
-};
-
-
-/**
- * @param {goog.events.BrowserEvent} evt
  * @private
  */
 OL3PanZoom.prototype.handleZoomInClick_ = function(evt) {
@@ -395,12 +355,12 @@ OL3PanZoom.prototype.handleZoomMaxClick_ = function(evt) {
 
 
 /**
- * @param {goog.events.BrowserEvent} evt
  * @param {string} direction
+ * @param {goog.events.BrowserEvent} evt
  * @return {boolean}
  * @private
  */
-OL3PanZoom.prototype.pan_ = function(evt, direction) {
+OL3PanZoom.prototype.pan_ = function(direction, evt) {
   var stopEvent = false;
 
   var map = this.getMap();
