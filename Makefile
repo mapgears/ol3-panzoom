@@ -87,7 +87,7 @@ cleanall: clean
 	mkdir -p dist/ol3
 	cp ol3/build/ol-debug.js dist/ol3/
 	cp ol3/build/ol.js dist/ol3/
-	mkdir dist/css
+	mkdir -p dist/css
 	cp css/ol3pz.css dist/css/
 	mkdir -p dist/ol3/css
 	cp ol3/build/ol.css dist/ol3/css/
