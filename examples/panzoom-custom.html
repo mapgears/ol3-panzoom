@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index, all" />
+    <title>OL3-PanZoom simple example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../ol3/css/ol.css" type="text/css" />
+    <link rel="stylesheet" href="../css/ol3pz.css" type="text/css" />
+    <link rel="stylesheet" href="./resources/layout.css" type="text/css" />
+    <style>
+      #OpenLayers_Control_PanZoom_pandown,
+      #OpenLayers_Control_PanZoom_panleft,
+      #OpenLayers_Control_PanZoom_panright,
+      #OpenLayers_Control_PanZoom_panup,
+      #OpenLayers_Control_PanZoom_zoomworld {
+        display: none;
+      }
+
+      #OpenLayers_Control_PanZoom_zoomin,
+      #OpenLayers_Control_PanZoom_zoomin_innerImage,
+      #OpenLayers_Control_PanZoom_zoomout,
+      #OpenLayers_Control_PanZoom_zoomout_innerImage {
+        height: 36px !important;
+        width: 36px !important;
+        left: 6px !important;
+      }
+
+      #OpenLayers_Control_PanZoom_zoomin {
+        top: 4px !important;
+      }
+
+      #OpenLayers_Control_PanZoom_zoomout {
+        top: 40px !important;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <div id="map" class="map"></div>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12">
+          <h4>Simple example</h4>
+          <p>
+            Todo
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="../ol3/build/ol.js"></script>
+
+    <script src="/@loader"></script>
+    <script src="panzoom-custom.js"></script>
+  </body>
+</html>
