@@ -32,6 +32,3 @@ var map = new ol.Map({
     zoom: 12
   })
 });
-
-
-
