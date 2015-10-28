@@ -256,35 +256,46 @@ OL3PanZoom.prototype.createButtonEl_ = function(action) {
     var imgEl = document.createElement('img');
     switch (action) {
       case 'pan-east':
+        imgEl.id = 'OpenLayers_Control_PanZoom_panright_innerImage';
         imgEl.src = [path, 'east-mini.png'].join('/');
+        divEl.id = 'OpenLayers_Control_PanZoom_panright';
         divEl.style.top = '22px';
         divEl.style.left = '22px';
         break;
       case 'pan-north':
+        imgEl.id = 'OpenLayers_Control_PanZoom_panup_innerImage';
         imgEl.src = [path, 'north-mini.png'].join('/');
+        divEl.id = 'OpenLayers_Control_PanZoom_panup';
         divEl.style.top = '4px';
         divEl.style.left = '13px';
         break;
       case 'pan-south':
+        imgEl.id = 'OpenLayers_Control_PanZoom_pandown_innerImage';
         imgEl.src = [path, 'south-mini.png'].join('/');
+        divEl.id = 'OpenLayers_Control_PanZoom_pandown';
         divEl.style.top = '40px';
         divEl.style.left = '13px';
         break;
       case 'pan-west':
+        imgEl.id = 'OpenLayers_Control_PanZoom_panleft_innerImage';
         imgEl.src = [path, 'west-mini.png'].join('/');
+        divEl.id = 'OpenLayers_Control_PanZoom_panleft';
         divEl.style.top = '22px';
         divEl.style.left = '4px';
         break;
       case 'zoom-in':
+        imgEl.id = 'OpenLayers_Control_PanZoom_zoomin_innerImage';
         imgEl.src = [path, 'zoom-plus-mini.png'].join('/');
+        divEl.id = 'OpenLayers_Control_PanZoom_zoomin';
         divEl.style.top = '63px';
         divEl.style.left = '13px';
         break;
       case 'zoom-out':
+        imgEl.id = 'OpenLayers_Control_PanZoom_zoomout_innerImage';
         imgEl.src = [path, 'zoom-minus-mini.png'].join('/');
+        divEl.id = 'OpenLayers_Control_PanZoom_zoomout';
         if (slider) {
           divEl.style.top = [this.getSliderSize_() + 81, 'px'].join('');
-          //divEl.style.top = '290px';
         } else if (maxExtent) {
           divEl.style.top = '99px';
         } else {
@@ -293,7 +304,9 @@ OL3PanZoom.prototype.createButtonEl_ = function(action) {
         divEl.style.left = '13px';
         break;
       case 'zoom-max':
+        imgEl.id = 'OpenLayers_Control_PanZoom_zoomworld_innerImage';
         imgEl.src = [path, 'zoom-world-mini.png'].join('/');
+        divEl.id = 'OpenLayers_Control_PanZoom_zoomworld';
         divEl.style.top = '81px';
         divEl.style.left = '13px';
         break;
