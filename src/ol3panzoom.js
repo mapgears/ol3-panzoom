@@ -254,6 +254,9 @@ OL3PanZoom.prototype.createButtonEl_ = function(action) {
     divEl.style.cursor = 'pointer';
 
     var imgEl = document.createElement('img');
+    imgEl.style.width = '18px';
+    imgEl.style.height = '18px';
+
     switch (action) {
       case 'pan-east':
         imgEl.id = 'OpenLayers_Control_PanZoom_panright_innerImage';
