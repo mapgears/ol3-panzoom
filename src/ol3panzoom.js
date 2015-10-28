@@ -468,16 +468,25 @@ OL3PanZoom.prototype.adjustZoomSlider_ = function() {
 
   var height = [this.getSliderSize_(), 'px'].join('');
 
+  // bar
   var zoomSliderEl = zoomSlider.getElement();
   zoomSliderEl.style.background =
       ['url(', path, '/', 'zoombar.png', ')'].join('');
   zoomSliderEl.style.border = '0';
   zoomSliderEl.style['border-radius'] = '0';
+  zoomSliderEl.style.height = height;
   zoomSliderEl.style.left = '13px';
   zoomSliderEl.style.width = '18px';
   zoomSliderEl.style.top = '84px';
-  zoomSliderEl.style.height = height;
 
+  // slider
+  var sliderEl = zoomSliderEl.children[0];
+  goog.asserts.assertInstanceof(sliderEl, Element);
+  sliderEl.style.background = ['url(', path, '/', 'slider.png', ')'].join('');
+  sliderEl.style.border = 0;
+  sliderEl.style.height = '9px';
+  sliderEl.style.margin = '0 -1px';
+  sliderEl.style.width = '20px';
 };
 
 
