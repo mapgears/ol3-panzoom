@@ -7,9 +7,9 @@ integration of the `OpenLayers.Control.PanZoom` and
 
 ![Sample](./examples/resources/sample.png)
 
-The `ol.control.PanZoom` control allows one to migrate their existing PanZoom
-or PanZoomBar intergration from OpenLayers 2 into OpenLayers 3 with the same
-definition and compatibility for styling.
+The `ol.control.PanZoom` control makes it possible to migrate from OpenLayers
+2 to OpenLayers 3 while keeping the style definition that was used to
+customize those type of controls.
 
 
 Live examples
