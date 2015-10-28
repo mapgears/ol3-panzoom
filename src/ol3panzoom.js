@@ -232,6 +232,7 @@ OL3PanZoom.prototype.createEl_ = function() {
 
   if (path) {
     element.style.left = '4px';
+    element.style.position = 'absolute';
     element.style.top = '4px';
   }
 
@@ -455,8 +456,9 @@ OL3PanZoom.prototype.adjustZoomSlider_ = function() {
   zoomSliderEl.style['border-radius'] = '0';
   zoomSliderEl.style.height = height;
   zoomSliderEl.style.left = '13px';
-  zoomSliderEl.style.width = '18px';
+  zoomSliderEl.style.padding = '0';
   zoomSliderEl.style.top = '84px';
+  zoomSliderEl.style.width = '18px';
 
   // slider
   var sliderEl = zoomSliderEl.children[0];
