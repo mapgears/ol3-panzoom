@@ -23,6 +23,12 @@ OL3PanZoom = function(opt_options) {
    */
   this.className_ = options.className ? options.className : 'ol-panzoom';
 
+  /**
+   * @type {?string}
+   * @private
+   */
+  this.imgPath_ = options.imgPath ? options.imgPath : null;
+
   var element = this.createEl_();
 
   goog.base(this, {
@@ -41,12 +47,6 @@ OL3PanZoom = function(opt_options) {
    * @private
    */
   this.duration_ = options.duration !== undefined ? options.duration : 100;
-
-  /**
-   * @type {?string}
-   * @private
-   */
-  this.imgPath_ = options.imgPath ? options.imgPath : null;
 
   /**
    * @type {?ol.Extent}
@@ -220,12 +220,15 @@ OL3PanZoom.prototype.createEl_ = function() {
   var className = this.className_;
   var cssClasses = [
     className,
-    'ol-unselectable',
-    'ol-control'
-  ].join(' ');
+    'ol-unselectable'
+  ];
+
+  if (!path) {
+    cssClasses.push('ol-control');
+  };
 
   var element = document.createElement('div');
-  element.className = cssClasses;
+  element.className = cssClasses.join(' ');
 
   if (path) {
     element.style.left = '4px';
