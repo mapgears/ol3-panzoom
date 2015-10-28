@@ -4,38 +4,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="robots" content="index, all" />
-    <title>OL3-PanZoom simple example</title>
+    <title>OL3-PanZoom MaxExtent example</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../css/ol3pz.css" type="text/css" />
     <link rel="stylesheet" href="./resources/layout.css" type="text/css" />
-    <style>
-      #OpenLayers_Control_PanZoom_pandown,
-      #OpenLayers_Control_PanZoom_panleft,
-      #OpenLayers_Control_PanZoom_panright,
-      #OpenLayers_Control_PanZoom_panup,
-      #OpenLayers_Control_PanZoom_zoomworld {
-        display: none;
-      }
-
-      #OpenLayers_Control_PanZoom_zoomin,
-      #OpenLayers_Control_PanZoom_zoomin_innerImage,
-      #OpenLayers_Control_PanZoom_zoomout,
-      #OpenLayers_Control_PanZoom_zoomout_innerImage {
-        height: 36px !important;
-        width: 36px !important;
-        left: 6px !important;
-      }
-
-      #OpenLayers_Control_PanZoom_zoomin {
-        top: 4px !important;
-      }
-
-      #OpenLayers_Control_PanZoom_zoomout {
-        top: 40px !important;
-      }
-
-    </style>
   </head>
   <body>
 
@@ -47,9 +20,16 @@
       </div>
       <div class="row-fluid">
         <div class="span12">
-          <h4>Simple example</h4>
+          <h4>MaxExtent example</h4>
           <p>
-            Todo
+            When defining the <tt>maxExtent</tt> option, the "zoom to maxextent"
+            button appears. When clicked, the map view gets fit to the defined
+            extent.
+          </p>
+          <p>
+            With this option set, in addition to the <tt>imgPath</tt>, the
+            control looks exactly like the <tt>OpenLayers.Control.PanZoom</tt>
+            in OpenLayers 2.
           </p>
         </div>
       </div>
@@ -58,6 +38,6 @@
     <script src="../ol3/build/ol.js"></script>
 
     <script src="/@loader"></script>
-    <script src="panzoom-custom.js"></script>
+    <script src="maxextent.js"></script>
   </body>
 </html>

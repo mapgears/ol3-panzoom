@@ -1,14 +1,9 @@
-var minZoom = 1;
-var maxZoom = 19;
+// Note that the view and control must share the same min/max zoom
+var minZoom = 6;
+var maxZoom = 15;
 
-/**
- * In OpenLayers 2, the OpenLayers.ImgPath was used to define a directory where
- * native controls fetched their images. The same idea is borrowed here in
- * order to reuse the same images.
- */
 var panZoom = new ol.control.PanZoom({
-  className: 'olControlPanZoomBar',
-  imgPath: './resources/ol2img',
+  imgPath: './resources/zoombar_black',
   minZoom: minZoom,
   maxZoom: maxZoom,
   slider: true

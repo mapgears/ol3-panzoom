@@ -1,8 +1,4 @@
-/**
- * In OpenLayers 2, the OpenLayers.ImgPath was used to define a directory where
- * native controls fetched their images. The same idea is borrowed here in
- * order to reuse the same images.
- */
+// Define a `maxExtent` to include the "zoom to max extent" button
 var panZoom = new ol.control.PanZoom({
   imgPath: './resources/ol2img',
   maxExtent: [813079, 5929220, 848966, 5936863]
