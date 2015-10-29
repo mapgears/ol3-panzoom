@@ -261,6 +261,7 @@ OL3PanZoom.prototype.createButtonEl_ = function(action) {
     var imgEl = document.createElement('img');
     imgEl.style.width = '18px';
     imgEl.style.height = '18px';
+    imgEl.style['vertical-align'] = 'top';
 
     switch (action) {
       case 'pan-east':
@@ -447,7 +448,7 @@ OL3PanZoom.prototype.adjustZoomSlider_ = function() {
   zoomSliderEl.style.height = height;
   zoomSliderEl.style.left = '13px';
   zoomSliderEl.style.padding = '0';
-  zoomSliderEl.style.top = '84px';
+  zoomSliderEl.style.top = '81px';
   zoomSliderEl.style.width = '18px';
 
   // slider
