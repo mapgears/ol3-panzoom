@@ -192,13 +192,14 @@ OL3PanZoom.prototype.setMap = function(map) {
         this.pan_.bind(this, 'south'), false, this));
     keys.push(goog.events.listen(this.panWestEl_, goog.events.EventType.CLICK,
         this.pan_.bind(this, 'west'), false, this));
+
     keys.push(goog.events.listen(this.zoomInEl_, goog.events.EventType.CLICK,
-        this.handleZoomInClick_, false, this));
+        this.zoom_.bind(this, 'in'), false, this));
     keys.push(goog.events.listen(this.zoomOutEl_, goog.events.EventType.CLICK,
-        this.handleZoomOutClick_, false, this));
+        this.zoom_.bind(this, 'out'), false, this));
     if (this.maxExtent_ && !this.slider_) {
       keys.push(goog.events.listen(this.zoomMaxEl_, goog.events.EventType.CLICK,
-          this.handleZoomMaxClick_, false, this));
+          this.zoom_.bind(this, 'max'), false, this));
     }
     if (this.slider_) {
       zoomSlider.setTarget(this.element_);
@@ -225,7 +226,7 @@ OL3PanZoom.prototype.createEl_ = function() {
 
   if (!path) {
     cssClasses.push('ol-control');
-  };
+  }
 
   var element = document.createElement('div');
   element.className = cssClasses.join(' ');
@@ -326,39 +327,6 @@ OL3PanZoom.prototype.createButtonEl_ = function(action) {
 
 
 /**
- * @param {goog.events.BrowserEvent} evt
- * @private
- */
-OL3PanZoom.prototype.handleZoomInClick_ = function(evt) {
-  this.zoomByDelta_(this.zoomDelta_);
-};
-
-
-/**
- * @param {goog.events.BrowserEvent} evt
- * @private
- */
-OL3PanZoom.prototype.handleZoomOutClick_ = function(evt) {
-  this.zoomByDelta_(-this.zoomDelta_);
-};
-
-
-/**
- * @param {goog.events.BrowserEvent} evt
- * @private
- */
-OL3PanZoom.prototype.handleZoomMaxClick_ = function(evt) {
-  var map = this.getMap();
-  var view = map.getView();
-  var extent = !this.maxExtent_ ?
-      view.getProjection().getExtent() : this.maxExtent_;
-  var size = map.getSize();
-  goog.asserts.assert(size, 'size should be defined');
-  view.fit(extent, size);
-};
-
-
-/**
  * @param {string} direction
  * @param {goog.events.BrowserEvent} evt
  * @return {boolean}
@@ -404,6 +372,28 @@ OL3PanZoom.prototype.pan_ = function(direction, evt) {
   stopEvent = true;
 
   return !stopEvent;
+};
+
+
+/**
+ * @param {string} direction
+ * @param {goog.events.BrowserEvent} evt
+ * @private
+ */
+OL3PanZoom.prototype.zoom_ = function(direction, evt) {
+  if (direction === 'in') {
+    this.zoomByDelta_(this.zoomDelta_);
+  } else if (direction === 'out') {
+    this.zoomByDelta_(-this.zoomDelta_);
+  } else if (direction === 'max') {
+    var map = this.getMap();
+    var view = map.getView();
+    var extent = !this.maxExtent_ ?
+        view.getProjection().getExtent() : this.maxExtent_;
+    var size = map.getSize();
+    goog.asserts.assert(size, 'size should be defined');
+    view.fit(extent, size);
+  }
 };
 
 
