@@ -1,4 +1,4 @@
-goog.provide('OL3ZoomSlider');
+goog.provide('olpz.control.ZoomSlider');
 
 
 
@@ -8,7 +8,7 @@ goog.provide('OL3ZoomSlider');
  * @extends {ol.control.ZoomSlider}
  * @api
  */
-var OL3ZoomSlider = function(opt_options) {
+olpz.control.ZoomSlider = function(opt_options) {
 
   /**
    * @type {Element}
@@ -18,13 +18,13 @@ var OL3ZoomSlider = function(opt_options) {
 
   goog.base(this, opt_options);
 };
-goog.inherits(OL3ZoomSlider, ol.control.ZoomSlider);
+goog.inherits(olpz.control.ZoomSlider, ol.control.ZoomSlider);
 
 
 /**
  * @return {Element}
  * @api
  */
-OL3ZoomSlider.prototype.getElement = function() {
+olpz.control.ZoomSlider.prototype.getElement = function() {
   return this.element;
 };

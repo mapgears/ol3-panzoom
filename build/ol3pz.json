@@ -6,7 +6,7 @@
     "externs": [
       "ol3/build/ol-externs.js",
       "ol3/externs/esrijson.js",
-      "externs/olx.js"
+      "externs/olpzx.js"
     ],
     "define": [
       "goog.DEBUG=true"

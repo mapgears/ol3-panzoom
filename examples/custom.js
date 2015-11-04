@@ -1,4 +1,4 @@
-var panZoom = new ol.control.PanZoom({
+var panZoom = new olpz.control.PanZoom({
   imgPath: './resources/ol2img'
 });
 
