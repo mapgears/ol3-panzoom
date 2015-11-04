@@ -2,7 +2,7 @@
 var minZoom = 6;
 var maxZoom = 15;
 
-var panZoom = new ol.control.PanZoom({
+var panZoom = new olpz.control.PanZoom({
   imgPath: './resources/zoombar_black',
   minZoom: minZoom,
   maxZoom: maxZoom,

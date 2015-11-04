@@ -1,4 +1,4 @@
-var panZoom = new ol.control.PanZoom({
+var panZoom = new olpz.control.PanZoom({
   className: 'olControlPanZoomBar', // define a different css class
   imgPath: './resources/ol2img',
   slider: true

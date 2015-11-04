@@ -1,4 +1,16 @@
 /**
+ * @type {Object}
+ */
+var olpzx;
+
+
+/**
+ * @type {Object}
+ */
+olpzx.control;
+
+
+/**
  * @typedef {{
  *     className: (string|undefined),
  *     duration: (number|undefined),
@@ -13,7 +25,7 @@
  * }}
  * @api
  */
-olx.control.PanZoomOptions;
+olpzx.control.PanZoomOptions;
 
 
 /**
@@ -21,7 +33,7 @@ olx.control.PanZoomOptions;
  * @type {string|undefined}
  * @api
  */
-olx.control.PanZoomOptions.prototype.className;
+olpzx.control.PanZoomOptions.prototype.className;
 
 
 /**
@@ -29,7 +41,7 @@ olx.control.PanZoomOptions.prototype.className;
  * @type {number|undefined}
  * @api
  */
-olx.control.PanZoomOptions.prototype.duration;
+olpzx.control.PanZoomOptions.prototype.duration;
 
 
 /**
@@ -37,7 +49,7 @@ olx.control.PanZoomOptions.prototype.duration;
  * @type {string|undefined}
  * @api
  */
-olx.control.PanZoomOptions.prototype.imgPath;
+olpzx.control.PanZoomOptions.prototype.imgPath;
 
 
 /**
@@ -45,7 +57,7 @@ olx.control.PanZoomOptions.prototype.imgPath;
  * @type {ol.Extent|undefined}
  * @api
  */
-olx.control.PanZoomOptions.prototype.maxExtent;
+olpzx.control.PanZoomOptions.prototype.maxExtent;
 
 
 /**
@@ -54,7 +66,7 @@ olx.control.PanZoomOptions.prototype.maxExtent;
  * @type {number|undefined}
  * @api
  */
-olx.control.PanZoomOptions.prototype.maxZoom;
+olpzx.control.PanZoomOptions.prototype.maxZoom;
 
 
 /**
@@ -63,7 +75,7 @@ olx.control.PanZoomOptions.prototype.maxZoom;
  * @type {number|undefined}
  * @api
  */
-olx.control.PanZoomOptions.prototype.minZoom;
+olpzx.control.PanZoomOptions.prototype.minZoom;
 
 
 /**
@@ -71,7 +83,7 @@ olx.control.PanZoomOptions.prototype.minZoom;
  * @type {number|undefined}
  * @api
  */
-olx.control.PanZoomOptions.prototype.pixelDelta;
+olpzx.control.PanZoomOptions.prototype.pixelDelta;
 
 
 /**
@@ -80,7 +92,7 @@ olx.control.PanZoomOptions.prototype.pixelDelta;
  * @type {number|undefined}
  * @api
  */
-olx.control.PanZoomOptions.prototype.slider;
+olpzx.control.PanZoomOptions.prototype.slider;
 
 
 /**
@@ -88,7 +100,7 @@ olx.control.PanZoomOptions.prototype.slider;
  * @type {Element|undefined}
  * @api
  */
-olx.control.PanZoomOptions.prototype.target;
+olpzx.control.PanZoomOptions.prototype.target;
 
 
 /**
@@ -96,4 +108,4 @@ olx.control.PanZoomOptions.prototype.target;
  * @type {number|undefined}
  * @api
  */
-olx.control.PanZoomOptions.prototype.zomDelta;
+olpzx.control.PanZoomOptions.prototype.zomDelta;

@@ -1,19 +1,19 @@
-goog.provide('OL3PanZoom');
+goog.provide('olpz.control.PanZoom');
 
-goog.require('OL3ZoomSlider');
 goog.require('goog.asserts');
 goog.require('goog.events');
 goog.require('goog.events.EventType');
+goog.require('olpz.control.ZoomSlider');
 
 
 
 /**
  * @constructor
- * @param {olx.control.PanZoomOptions=} opt_options Options.
+ * @param {olpzx.control.PanZoomOptions=} opt_options Options.
  * @extends {ol.control.Control}
  * @api
  */
-OL3PanZoom = function(opt_options) {
+olpz.control.PanZoom = function(opt_options) {
 
   var options = opt_options || {};
 
@@ -129,10 +129,10 @@ OL3PanZoom = function(opt_options) {
       this.createButtonEl_('zoom-max') : null;
 
   /**
-   * @type {?OL3ZoomSlider}
+   * @type {?olpz.control.ZoomSlider}
    * @private
    */
-  this.zoomSliderCtrl_ = (this.slider_) ? new OL3ZoomSlider() : null;
+  this.zoomSliderCtrl_ = (this.slider_) ? new olpz.control.ZoomSlider() : null;
 
   element.appendChild(this.panNorthEl_);
   element.appendChild(this.panWestEl_);
@@ -151,20 +151,14 @@ OL3PanZoom = function(opt_options) {
   this.element_ = element;
 
 };
-goog.inherits(OL3PanZoom, ol.control.Control);
-
-
-/**
- * @api
- */
-ol.control.PanZoom = OL3PanZoom;
+goog.inherits(olpz.control.PanZoom, ol.control.Control);
 
 
 /**
  * @param {ol.Map} map
  * @api
  */
-OL3PanZoom.prototype.setMap = function(map) {
+olpz.control.PanZoom.prototype.setMap = function(map) {
 
   var keys = this.listenerKeys_;
   var zoomSlider = this.zoomSliderCtrl_;
@@ -216,7 +210,7 @@ OL3PanZoom.prototype.setMap = function(map) {
  * @return {Element}
  * @private
  */
-OL3PanZoom.prototype.createEl_ = function() {
+olpz.control.PanZoom.prototype.createEl_ = function() {
   var path = this.imgPath_;
   var className = this.className_;
   var cssClasses = [
@@ -246,7 +240,7 @@ OL3PanZoom.prototype.createEl_ = function() {
  * @return {Element}
  * @private
  */
-OL3PanZoom.prototype.createButtonEl_ = function(action) {
+olpz.control.PanZoom.prototype.createButtonEl_ = function(action) {
   var divEl = document.createElement('div');
   var path = this.imgPath_;
   var maxExtent = this.maxExtent_;
@@ -333,7 +327,7 @@ OL3PanZoom.prototype.createButtonEl_ = function(action) {
  * @return {boolean}
  * @private
  */
-OL3PanZoom.prototype.pan_ = function(direction, evt) {
+olpz.control.PanZoom.prototype.pan_ = function(direction, evt) {
   var stopEvent = false;
 
   var map = this.getMap();
@@ -381,7 +375,7 @@ OL3PanZoom.prototype.pan_ = function(direction, evt) {
  * @param {goog.events.BrowserEvent} evt
  * @private
  */
-OL3PanZoom.prototype.zoom_ = function(direction, evt) {
+olpz.control.PanZoom.prototype.zoom_ = function(direction, evt) {
   if (direction === 'in') {
     this.zoomByDelta_(this.zoomDelta_);
   } else if (direction === 'out') {
@@ -402,7 +396,7 @@ OL3PanZoom.prototype.zoom_ = function(direction, evt) {
  * @param {number} delta Zoom delta.
  * @private
  */
-OL3PanZoom.prototype.zoomByDelta_ = function(delta) {
+olpz.control.PanZoom.prototype.zoomByDelta_ = function(delta) {
   var map = this.getMap();
   var view = map.getView();
   if (!view) {
@@ -429,7 +423,7 @@ OL3PanZoom.prototype.zoomByDelta_ = function(delta) {
 /**
  * @private
  */
-OL3PanZoom.prototype.adjustZoomSlider_ = function() {
+olpz.control.PanZoom.prototype.adjustZoomSlider_ = function() {
   var zoomSlider = this.zoomSliderCtrl_;
   var path = this.imgPath_;
 
@@ -466,6 +460,6 @@ OL3PanZoom.prototype.adjustZoomSlider_ = function() {
  * @private
  * @return {number}
  */
-OL3PanZoom.prototype.getSliderSize_ = function() {
+olpz.control.PanZoom.prototype.getSliderSize_ = function() {
   return (this.maxZoom_ - this.minZoom_ + 1) * 11;
 };
