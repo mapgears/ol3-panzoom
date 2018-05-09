@@ -261,7 +261,7 @@ olpz.control.PanZoom.prototype.createButtonEl_ = function(action) {
       case 'pan-east':
         imgEl.id = 'OpenLayers_Control_PanZoom_panright_innerImage';
         imgEl.src = [path, 'east-mini.png'].join('/');
-        imgEl.alt = "Pan East";
+        imgEl.alt = 'Pan East';
         divEl.id = 'OpenLayers_Control_PanZoom_panright';
         divEl.style.top = '22px';
         divEl.style.left = '22px';
@@ -269,7 +269,7 @@ olpz.control.PanZoom.prototype.createButtonEl_ = function(action) {
       case 'pan-north':
         imgEl.id = 'OpenLayers_Control_PanZoom_panup_innerImage';
         imgEl.src = [path, 'north-mini.png'].join('/');
-        imgEl.alt = "Pan North";
+        imgEl.alt = 'Pan North';
         divEl.id = 'OpenLayers_Control_PanZoom_panup';
         divEl.style.top = '4px';
         divEl.style.left = '13px';
@@ -277,7 +277,7 @@ olpz.control.PanZoom.prototype.createButtonEl_ = function(action) {
       case 'pan-south':
         imgEl.id = 'OpenLayers_Control_PanZoom_pandown_innerImage';
         imgEl.src = [path, 'south-mini.png'].join('/');
-        imgEl.alt = "Pan South";
+        imgEl.alt = 'Pan South';
         divEl.id = 'OpenLayers_Control_PanZoom_pandown';
         divEl.style.top = '40px';
         divEl.style.left = '13px';
@@ -285,7 +285,7 @@ olpz.control.PanZoom.prototype.createButtonEl_ = function(action) {
       case 'pan-west':
         imgEl.id = 'OpenLayers_Control_PanZoom_panleft_innerImage';
         imgEl.src = [path, 'west-mini.png'].join('/');
-        imgEl.alt = "Pan West";
+        imgEl.alt = 'Pan West';
         divEl.id = 'OpenLayers_Control_PanZoom_panleft';
         divEl.style.top = '22px';
         divEl.style.left = '4px';
@@ -293,7 +293,7 @@ olpz.control.PanZoom.prototype.createButtonEl_ = function(action) {
       case 'zoom-in':
         imgEl.id = 'OpenLayers_Control_PanZoom_zoomin_innerImage';
         imgEl.src = [path, 'zoom-plus-mini.png'].join('/');
-        imgEl.alt = "Zoom In";
+        imgEl.alt = 'Zoom In';
         divEl.id = 'OpenLayers_Control_PanZoom_zoomin';
         divEl.style.top = '63px';
         divEl.style.left = '13px';
@@ -301,7 +301,7 @@ olpz.control.PanZoom.prototype.createButtonEl_ = function(action) {
       case 'zoom-out':
         imgEl.id = 'OpenLayers_Control_PanZoom_zoomout_innerImage';
         imgEl.src = [path, 'zoom-minus-mini.png'].join('/');
-        imgEl.alt = "Zoom Out";
+        imgEl.alt = 'Zoom Out';
         divEl.id = 'OpenLayers_Control_PanZoom_zoomout';
         if (slider) {
           divEl.style.top = [this.getSliderSize_() + 81, 'px'].join('');
@@ -315,7 +315,7 @@ olpz.control.PanZoom.prototype.createButtonEl_ = function(action) {
       case 'zoom-max':
         imgEl.id = 'OpenLayers_Control_PanZoom_zoomworld_innerImage';
         imgEl.src = [path, 'zoom-world-mini.png'].join('/');
-        imgEl.alt = "Zoom Max";
+        imgEl.alt = 'Zoom Max';
         divEl.id = 'OpenLayers_Control_PanZoom_zoomworld';
         divEl.style.top = '81px';
         divEl.style.left = '13px';
