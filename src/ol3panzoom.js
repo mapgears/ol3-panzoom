@@ -359,15 +359,20 @@ olpz.control.PanZoom.prototype.pan_ = function(direction, evt) {
   var currentCenter = view.getCenter();
   if (currentCenter) {
     if (this.duration_ && this.duration_ > 0) {
-      map.beforeRender(ol.animation.pan({
-        source: currentCenter,
-        duration: this.duration_,
-        easing: ol.easing.linear
-      }));
+      var center = view.constrainCenter([
+        currentCenter[0] + delta[0],
+        currentCenter[1] + delta[1]
+      ]);
+      if (this.duration_ && this.duration_ > 0) {
+        view.animate({
+          center: center,
+          duration: this.duration_,
+          easing: ol.easing.linear
+        });
+      } else {
+        view.setCenter(center);
+      }
     }
-    var center = view.constrainCenter(
-        [currentCenter[0] + delta[0], currentCenter[1] + delta[1]]);
-    view.setCenter(center);
   }
 
   evt.preventDefault();
@@ -413,16 +418,16 @@ olpz.control.PanZoom.prototype.zoomByDelta_ = function(delta) {
   }
   var currentResolution = view.getResolution();
   if (currentResolution) {
-    if (this.duration_ > 0) {
-      map.beforeRender(ol.animation.zoom({
-        undefined: null, // ? the compiler complains otherwise
-        resolution: currentResolution,
+    var newResolution = view.constrainResolution(currentResolution, delta);
+    if (this.duration_ && this.duration_ > 0) {
+      view.animate({
+        resolution: newResolution,
         duration: this.duration_,
         easing: ol.easing.easeOut
-      }));
+      });
+    } else {
+      view.setResolution(newResolution);
     }
-    var newResolution = view.constrainResolution(currentResolution, delta);
-    view.setResolution(newResolution);
   }
 };
 
