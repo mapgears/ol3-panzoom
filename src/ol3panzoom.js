@@ -359,7 +359,10 @@ olpz.control.PanZoom.prototype.pan_ = function(direction, evt) {
   var currentCenter = view.getCenter();
   if (currentCenter) {
     if (this.duration_ && this.duration_ > 0) {
-      var center = view.constrainCenter([currentCenter[0] + delta[0], currentCenter[1] + delta[1]]);
+      var center = view.constrainCenter([
+        currentCenter[0] + delta[0],
+        currentCenter[1] + delta[1]
+      ]);
       if (this.duration_ && this.duration_ > 0) {
         view.animate({
           center: center,
@@ -423,7 +426,7 @@ olpz.control.PanZoom.prototype.zoomByDelta_ = function(delta) {
         easing: ol.easing.easeOut
       });
     } else {
-       view.setResolution(newResolution);
+      view.setResolution(newResolution);
     }
   }
 };
